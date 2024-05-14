@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Column Layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+      padding: 120px 20px 20px; /* Adjusted padding-top to accommodate breakpoint indicator */
+      transition: padding 0.5s ease;
+    }
+
+    .col, .col-sm-6, .col-md-4, .col-lg-3 {
+      padding: 10px;
+      transition: padding 0.5s ease;
+    }
+
+    .box {
+      background-color: #444444;
+      text-align: center;
+      padding: 50px 0;
+      color: white;
+      font-size: 32px;
+      line-height: 32px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      transition: background-color 0.5s ease, padding 0.5s ease, margin-bottom 0.5s ease;
+    }
+
+    .box-1 { background-color: #ff5a60; }
+    .box-2 { background-color: #efb920; }
+    .box-3 { background-color: #009fe3; }
+    .box-4 {
+        background-color: #e6ecf0;
+        color: black;
+    }
+
+    #breakpoint-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 20px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div id="breakpoint-indicator">Resize the window to see breakpoint</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="box box-1">
+            <span class="d-none d-lg-block"><strong>A</strong> col-lg-3</span>
+            <span class="d-none d-md-block d-lg-none"><strong>A</strong> col-md-4</span>
+            <span class="d-none d-sm-block d-md-none"><strong>A</strong> col-sm-6</span>
+            <span class="d-block d-sm-none"><strong>A</strong> col-12</span>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-8 col-lg-3">
+        <div class="box box-2">
+            <span class="d-none d-lg-block"><strong>B</strong> col-lg-3</span>
+            <span class="d-none d-md-block d-lg-none"><strong>B</strong> col-md-8</span>
+            <span class="d-none d-sm-block d-md-none"><strong>B</strong> col-sm-6</span>
+            <span class="d-block d-sm-none"><strong>B</strong> col-12</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="box box-3">
+            <span class="d-none d-lg-block"><strong>C</strong> col-lg-3</span>
+            <span class="d-none d-md-block d-lg-none"><strong>C</strong> col-md-6</span>
+            <span class="d-none d-sm-block d-md-none"><strong>C</strong> col-12</span>
+            <span class="d-block d-sm-none"><strong>C</strong> col-12</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="box box-4">
+            <span class="d-none d-lg-block"><strong>D</strong> col-lg-3</span>
+            <span class="d-none d-md-block d-lg-none"><strong>D</strong> col-md-6</span>
+            <span class="d-none d-sm-block d-md-none"><strong>D</strong> col-12</span>
+            <span class="d-block d-sm-none"><strong>D</strong> col-12</span>
+        </div>
+    </div>
+    
+      <div class="col-12">
+        <div class="box">
+            <span class="d-block"><strong>E</strong> col-12</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateBreakpointIndicator() {
+      const width = window.innerWidth;
+      let breakpoint = 'Extra small screen (mobile)';
+      if (width >= 1200) {
+        breakpoint = 'Extra large screen (xl)';
+      } else if (width >= 992) {
+        breakpoint = 'Large screen (lg)';
+      } else if (width >= 768) {
+        breakpoint = 'Medium screen (md)';
+      } else if (width >= 576) {
+        breakpoint = 'Small screen (sm)';
+      }
+      document.getElementById('breakpoint-indicator').textContent = breakpoint;
+    }
+
+    window.addEventListener('resize', updateBreakpointIndicator);
+    window.addEventListener('load', updateBreakpointIndicator);
+  </script>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
